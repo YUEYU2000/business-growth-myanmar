@@ -22,18 +22,18 @@
    directly in its safe side. The poster becomes a soft full-height backdrop. */
 @media(max-width:700px){
   .hero{
-    height:640px;
-    min-height:640px;
+    height:auto;
+    min-height:330px;
     max-height:none;
-    padding:0;
+    padding:30px 18px 55px;
     background:#1b3049;
   }
   .hero:first-child{
-    height:740px;
-    min-height:740px;
-    padding:0;
+    height:auto;
+    min-height:460px;
+    padding:110px 18px 128px;
   }
-  #contact{height:720px;min-height:720px}
+  #contact{height:auto;min-height:390px}
   .visual,
   .hero:first-child .visual{
     inset:0;
@@ -55,17 +55,13 @@
     width:100%;
     height:100%;
     object-fit:contain;
-    object-position:center 18%;
+    object-position:center top;
     transform:none!important;
   }
   .visual img{z-index:0;opacity:1;filter:none}
   .visual video{z-index:1}
-  .visual.has-video img{
-    opacity:.72;
-    object-fit:cover;
-    filter:blur(20px) brightness(.52) saturate(.86);
-    transform:scale(1.12)!important;
-  }
+  .visual.has-video img{opacity:0}
+  .hero:first-child .visual{top:84px;height:calc(100% - 84px)}
   .visual.has-video video{opacity:1}
   .visual:after{
     content:'';
@@ -73,7 +69,7 @@
     z-index:2;
     inset:0;
     pointer-events:none;
-    background:linear-gradient(180deg,#10233b24 0 30%,#172b435c 48%,#172b43f2 79%,#1b3049 100%);
+    background:linear-gradient(180deg,transparent 0,transparent calc(56.25vw - 35px),#1b3049 calc(56.25vw + 12px));
   }
   .shade,
   .hero.right .shade{
@@ -87,11 +83,11 @@
   }
   .hero-copy,
   .hero.right .hero-copy{
-    position:absolute;
-    top:42%;
-    left:20px;
+    position:relative;
+    top:auto;
+    left:auto;
     right:auto;
-    width:64%;
+    width:48%;
     max-width:none;
     margin:0;
     padding:0;
@@ -103,52 +99,52 @@
     -webkit-backdrop-filter:none;
     text-shadow:0 2px 16px #0717278c;
   }
-  .hero.right .hero-copy{left:auto;right:20px}
-  .hero:first-child .hero-copy{top:40%}
-  #contact .hero-copy{top:36%;width:70%}
+  .hero.right .hero-copy{left:auto;right:auto;margin-left:auto}
+  .hero:first-child .hero-copy{top:auto}
+  #contact .hero-copy{top:auto;width:48%}
   .hero-copy:before{display:none}
   .hero-copy .eyebrow{
     display:block;
-    margin:0 0 10px;
+    margin:0 0 8px;
     padding:0;
     border:0;
     border-radius:0;
     background:none;
     font-size:7px;
     line-height:1.5;
-    letter-spacing:1.7px;
+    letter-spacing:1px;
   }
   .hero h1,
   .hero h2{
-    margin-bottom:11px;
-    font-size:clamp(28px,8vw,33px);
-    line-height:1.02;
-    letter-spacing:-1.2px;
+    margin-bottom:9px;
+    font-size:clamp(20px,5.7vw,28px);
+    line-height:1.08;
+    letter-spacing:-.6px;
   }
   .hero .my{
     margin-bottom:9px;
-    font-size:14px;
+    font-size:12px;
     line-height:1.65;
   }
   .hero .desc{
     margin-bottom:14px;
-    font-size:12.5px;
+    font-size:11px;
     line-height:1.5;
     color:#edf5ff;
   }
   .hero-copy > .button,
   .hero-copy > button.button{
-    min-height:40px;
-    padding:9px 15px;
+    min-height:44px;
+    padding:8px 12px;
     border-radius:15px;
     font-size:11px;
     text-shadow:none;
   }
-  .platforms{gap:6px;margin-top:12px}
+  .platforms{gap:4px;margin-top:10px;flex-wrap:wrap}
   .platforms span{padding:7px 9px;font-size:8px;border-radius:7px;text-shadow:none}
   .page-name{margin-bottom:10px;font-size:10px}
   .contact-note{font-size:9px;line-height:1.7}
-  .hero-dock{left:16px;right:16px;bottom:18px;padding:12px}
+  .hero-dock{left:16px;right:16px;bottom:12px;padding:9px}
   .section-bottom{left:20px;right:20px;bottom:20px;gap:9px;font-size:8px}
   .section-bottom small{font-size:8px}
   .motion{top:88px;right:14px;bottom:auto;background:#152840d9}
