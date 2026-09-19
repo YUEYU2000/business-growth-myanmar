@@ -17,3 +17,48 @@
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){body:not(.paused) .pointer-lit:before,body:not(.paused) .button.pointer-lit:after,body:not(.paused) .plan-grid article.pointer-lit:after{opacity:1}.plan-grid article{transition:transform .25s,border-color .25s;transform:perspective(1000px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}.plan-grid article.pointer-lit{border-color:#c8e6ffb0}}
 @media(max-width:700px){.visual img,.visual video{object-position:var(--mobile-position,50%) center}#city{--mobile-position:66%}#content,#food,#craft,#live,#contact{--mobile-position:30%}#hotel,#seller,#brand,#services{--mobile-position:65%}.hero:first-child .visual img,.hero:first-child .visual video{object-position:var(--mobile-position) center}.button:active{transform:scale(.98)}.hero:before,.button:after,.plan-grid article:after{display:none}}
 @media(prefers-reduced-motion:reduce){.plan-grid article{transform:none!important}.hero:before,.button:after,.plan-grid article:after{display:none}}
+
+/* Phone mode: present every horizontal scene as a complete 16:9 stage.
+   Copy follows in document flow, so video never needs to crop or stretch. */
+@media(max-width:700px){
+  .hero{
+    min-height:0;
+    height:auto;
+    padding:calc(56.25vw + 34px) 24px 108px;
+  }
+  .hero:first-child{
+    padding-top:calc(84px + 56.25vw + 34px);
+    padding-bottom:220px;
+  }
+  .visual{
+    inset:auto 0 auto 0;
+    top:0;
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+    background:#101d2d;
+    border-top:1px solid #d3e7ff24;
+    border-bottom:1px solid #d3e7ff2e;
+    mask-image:none;
+    -webkit-mask-image:none;
+    overflow:hidden;
+  }
+  .hero:first-child .visual{top:84px;height:auto}
+  .visual img,
+  .visual video,
+  .hero:first-child .visual img,
+  .hero:first-child .visual video{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center center;
+    transform:none!important;
+  }
+  .shade,
+  .hero.right .shade{background:linear-gradient(180deg,transparent 0 56.25vw,#263953 56.25vw)}
+  .hero:first-child .shade{background:linear-gradient(180deg,#14263d 0 84px,transparent 84px calc(84px + 56.25vw),#263953 calc(84px + 56.25vw))}
+  .hero-copy,
+  .hero.right .hero-copy{margin-top:0}
+  .hero:after{box-shadow:none}
+  .motion{top:calc(84px + 56.25vw - 44px);background:#152840d9}
+}
