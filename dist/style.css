@@ -18,16 +18,17 @@
 @media(max-width:700px){.visual img,.visual video{object-position:var(--mobile-position,50%) center}#city{--mobile-position:66%}#content,#food,#craft,#live,#contact{--mobile-position:30%}#hotel,#seller,#brand,#services{--mobile-position:65%}.hero:first-child .visual img,.hero:first-child .visual video{object-position:var(--mobile-position) center}.button:active{transform:scale(.98)}.hero:before,.button:after,.plan-grid article:after{display:none}}
 @media(prefers-reduced-motion:reduce){.plan-grid article{transform:none!important}.hero:before,.button:after,.plan-grid article:after{display:none}}
 
-/* Phone mode: present every horizontal scene as a complete 16:9 stage.
-   Copy follows in document flow, so video never needs to crop or stretch. */
+/* Phone mode: a complete 16:9 scene flows into a translucent editorial sheet. */
 @media(max-width:700px){
   .hero{
     min-height:0;
     height:auto;
-    padding:calc(56.25vw + 34px) 24px 108px;
+    padding:calc(56.25vw - 22px) 24px 112px;
+    background:linear-gradient(155deg,#263953 0%,#20354e 58%,#263953 100%);
   }
   .hero:first-child{
-    padding-top:calc(84px + 56.25vw + 34px);
+    min-height:0;
+    padding-top:calc(84px + 56.25vw - 22px);
     padding-bottom:220px;
   }
   .visual{
@@ -38,10 +39,21 @@
     aspect-ratio:16/9;
     background:#101d2d;
     border-top:1px solid #d3e7ff24;
-    border-bottom:1px solid #d3e7ff2e;
+    box-shadow:0 22px 54px #08142266;
     mask-image:none;
     -webkit-mask-image:none;
     overflow:hidden;
+  }
+  .visual:after{
+    content:'';
+    position:absolute;
+    z-index:2;
+    left:0;
+    right:0;
+    bottom:0;
+    height:38%;
+    pointer-events:none;
+    background:linear-gradient(180deg,transparent,#172b4375);
   }
   .hero:first-child .visual{top:84px;height:auto}
   .visual img,
@@ -55,10 +67,42 @@
     transform:none!important;
   }
   .shade,
-  .hero.right .shade{background:linear-gradient(180deg,transparent 0 56.25vw,#263953 56.25vw)}
-  .hero:first-child .shade{background:linear-gradient(180deg,#14263d 0 84px,transparent 84px calc(84px + 56.25vw),#263953 calc(84px + 56.25vw))}
+  .hero.right .shade{background:none}
+  .hero:first-child .shade{background:linear-gradient(180deg,#14263d 0 84px,transparent 84px)}
   .hero-copy,
-  .hero.right .hero-copy{margin-top:0}
+  .hero.right .hero-copy{
+    left:-8px;
+    right:auto;
+    width:calc(100% + 16px);
+    margin-top:0;
+    padding:28px 24px 31px;
+    border:1px solid #c9e3ff3d;
+    border-radius:24px;
+    background:linear-gradient(145deg,#304b68e8,#1b304ae8 54%,#263b55f2);
+    box-shadow:inset 0 1px 1px #ffffff30,0 22px 48px #07172742;
+    backdrop-filter:blur(20px) saturate(118%);
+    -webkit-backdrop-filter:blur(20px) saturate(118%);
+  }
+  .hero-copy:before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:24px;
+    width:76px;
+    height:1px;
+    background:linear-gradient(90deg,#e5f3ffcc,transparent);
+  }
+  .hero-copy .eyebrow{
+    display:inline-flex;
+    margin-bottom:18px;
+    padding:7px 10px 6px;
+    border:1px solid #d6eaff2b;
+    border-radius:999px;
+    background:#b9d8f114;
+  }
+  .hero h1,
+  .hero h2{font-size:clamp(36px,10.5vw,43px)}
+  .hero-copy > .button{box-shadow:inset 0 1px 4px #fff8,0 8px 24px #08182a40}
   .hero:after{box-shadow:none}
   .motion{top:calc(84px + 56.25vw - 44px);background:#152840d9}
 }
